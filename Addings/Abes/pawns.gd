@@ -4,6 +4,7 @@ extends CharacterBody2D
 var speed      := 640.0
 var direction  := Vector2.RIGHT
 
+
 func _ready() -> void:
 	## init direction
 	if(global_position.x < 640):
