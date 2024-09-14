@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dfunbkpmfkc74"]
+
+[node name="Abes" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="World"]
+visibility_layer = 513
+position = Vector2(640, 360)
