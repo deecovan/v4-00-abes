@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://dfunbkpmfkc74"]
+[gd_scene load_steps=4 format=3 uid="uid://dfunbkpmfkc74"]
+
+[ext_resource type="Texture2D" uid="uid://b8q3d2sqc5qul" path="res://icon.svg" id="1_s1g7g"]
+[ext_resource type="Script" path="res://Addings/Abes/pawns.gd" id="1_xchnm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uuawj"]
 
 [node name="Abes" type="Node2D"]
 
@@ -7,3 +12,23 @@
 [node name="Camera2D" type="Camera2D" parent="World"]
 visibility_layer = 513
 position = Vector2(640, 360)
+
+[node name="from" type="CharacterBody2D" parent="."]
+position = Vector2(256, 192)
+script = ExtResource("1_xchnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="from"]
+shape = SubResource("CircleShape2D_uuawj")
+
+[node name="Sprite2D" type="Sprite2D" parent="from"]
+texture = ExtResource("1_s1g7g")
+
+[node name="to" type="CharacterBody2D" parent="."]
+position = Vector2(1024, 512)
+script = ExtResource("1_xchnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to"]
+shape = SubResource("CircleShape2D_uuawj")
+
+[node name="Sprite2D" type="Sprite2D" parent="to"]
+texture = ExtResource("1_s1g7g")
