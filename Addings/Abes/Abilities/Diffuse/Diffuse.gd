@@ -40,20 +40,24 @@ func execute(args: Dictionary) -> Dictionary:
 	return res
 
 
-## Not works but forced with instance.set_process(true)
+## It doesn't work here, but it can be forced using instance.set_process(true)
 func _process(delta: float) -> void:
+	## To avoid empty startup errors
 	if (from != null and to != null and 
 			get_tree().get_nodes_in_group("diffuse").size() > 0):
+		## Iteration of diffusion parts
 		for child in get_children():
 			if child.is_in_group("diffuse"):
+				## If the destination is reached
 				if (child.global_position - to.global_position).length() < 64:
 					child.queue_free()
 				else:
+					## Move manually because move_and_slide does not exist
 					child.global_position = lerp(
 						child.global_position, to.global_position, 
 						(randf() * diffuse_speed * delta))
 
-
+## Create and start a timer manually
 func start_timer() -> void:
 	timer = Timer.new()
 	timer.one_shot = true
@@ -61,6 +65,6 @@ func start_timer() -> void:
 	add_child(timer)
 	timer.connect("timeout", _on_timer_timeout)
 
-
+## Manually too
 func _on_timer_timeout() -> void:
 	timer.queue_free()
