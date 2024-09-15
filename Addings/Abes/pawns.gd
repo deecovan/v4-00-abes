@@ -29,6 +29,13 @@ func _physics_process(delta: float) -> void:
 	velocity  += direction * speed * delta
 	velocity.x = clamp(velocity.x, -speed, speed)
 	move_and_slide()
+	## Call attachable.execute()
+	if(randf() < 0.01):
+		var args: Dictionary
+		args.from = get_parent().find_child("from")
+		args.to = get_parent().find_child("to")
+		args.amount = 10
+		abes[0].execute(args)
 	
 	
 func attachable(abe_name: StringName, args: Array = []) -> Node:
