@@ -36,7 +36,6 @@ func execute(args: Dictionary) -> Dictionary:
 		square_node.show()
 	## Return result
 	res.name = to
-	res.cooldown = false
 	res.count = get_tree().get_nodes_in_group("diffuse").size()
 	return res
 
