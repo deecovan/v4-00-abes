@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfunbkpmfkc74"]
+[gd_scene load_steps=4 format=3 uid="uid://dfunbkpmfkc74"]
 
 [ext_resource type="Texture2D" uid="uid://b8q3d2sqc5qul" path="res://icon.svg" id="1_s1g7g"]
 [ext_resource type="Script" path="res://Addings/Abes/pawns.gd" id="1_xchnm"]
-[ext_resource type="PackedScene" uid="uid://cv1hns07p3v2" path="res://Addings/Abes/abilities/diffuse.tscn" id="3_o0ic7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uuawj"]
 
@@ -23,9 +22,6 @@ shape = SubResource("CircleShape2D_uuawj")
 
 [node name="Sprite2D" type="Sprite2D" parent="from"]
 texture = ExtResource("1_s1g7g")
-
-[node name="Diffuse" parent="from" instance=ExtResource("3_o0ic7")]
-script = null
 
 [node name="to" type="CharacterBody2D" parent="."]
 position = Vector2(1024, 512)

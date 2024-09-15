@@ -3,7 +3,8 @@ extends CharacterBody2D
 
 var speed      := 640.0
 var direction  := Vector2.RIGHT
-
+var abes       := []
+	
 
 func _ready() -> void:
 	## init direction
@@ -14,6 +15,9 @@ func _ready() -> void:
 	## little random
 	velocity.x  += direction.x * speed * randf()
 	speed *= randf_range(0.8,1.2)
+	
+	## @USE attachable
+	abes.append(attachable("Diffuse"))
 
 
 func _physics_process(delta: float) -> void:
@@ -25,3 +29,9 @@ func _physics_process(delta: float) -> void:
 	velocity  += direction * speed * delta
 	velocity.x = clamp(velocity.x, -speed, speed)
 	move_and_slide()
+	
+	
+func attachable(abe_name: StringName, args: Array = []) -> Node:
+	var attached := Node.new()
+	print("Node \"", name, "\" attached ", abe_name, args)
+	return attached

@@ -1,13 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv1hns07p3v2"]
+[gd_scene format=3 uid="uid://cv1hns07p3v2"]
 
-[ext_resource type="Script" path="res://Addings/Abes/abilities/diffuse.gd" id="1_3nqht"]
-
-[node name="Diffuse" type="Node2D" node_paths=PackedStringArray("square", "from", "to")]
+[node name="Diffuse" type="Node2D"]
 z_index = 555
-script = ExtResource("1_3nqht")
-square = NodePath("Square")
-from = NodePath("")
-to = NodePath("")
 
 [node name="Square" type="Polygon2D" parent="."]
 color = Color(1, 0, 1, 1)

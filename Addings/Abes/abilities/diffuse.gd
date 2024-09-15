@@ -1,29 +1,41 @@
 extends Node2D
 
 
-@export var square: Node2D
 @export var from: CharacterBody2D
 @export var to: CharacterBody2D
-@export var timer: float = 0.0
 @export var amount: int = 0:
 	set(value):
 		if value < 0:
 			amount = 0
 		else:
 			amount = value
+@export var timer: float = 0.0
+@export var square: Node2D
 var square_array: Array
 
 
-func _ready() -> void:
+## @INTERFACE execute(args: Array) -> Array:
+func execute(_args: Array) -> Array:
+	var res := []
+	return res
+
+
+func _init() -> void:
 	amount = 10
-	square = $Square
+	print(amount)
+	square = find_child("Square")
+	
+
+func _ready() -> void:
 	for i in amount:
 		var square_node = square.duplicate()
 		square_array.append(square_node)
 		self.add_child(square_node)
 		square_node.add_to_group("diffuse")
 		square_node.global_position += Vector2(randf_range(-20,20),randf_range(-20,20))
+		print(square_node.global_position)
 		square_node.show()
+
 
 func _process(delta: float) -> void:
 	timer += delta
