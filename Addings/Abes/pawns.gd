@@ -32,8 +32,14 @@ func _physics_process(delta: float) -> void:
 	## Call attachable.execute()
 	if(randf() < 0.1):
 		var args: Dictionary
-		args.from = get_parent().find_child("from")
-		args.to = get_parent().find_child("to")
+		if name == "p1":
+			args.from = get_parent().find_child("p1")
+			args.to = get_parent().find_child("p2")
+			args.color = Color.CYAN
+		else:
+			args.from = get_parent().find_child("p2")
+			args.to = get_parent().find_child("p1")
+			args.color = Color.MAGENTA
 		args.amount = 10
 		abes[0].execute(args)
 	

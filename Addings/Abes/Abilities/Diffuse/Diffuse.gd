@@ -9,31 +9,23 @@ var amount: int = 0
 var timer: float = 0.0
 var square_array: Array
 var square: Polygon2D
+var color: Color
 
 
-## @INTERFACE execute(args: Array) -> Array:
-## args: Array
-	#from = args.from
-	#to = args.to
-	#amount = args.amount
-func execute(args: Dictionary) -> Array:
-	var res := []
-	
-	#if(timer > 0.0 and timer < diffuse_cooldown):
-		#return res
-		
+## @INTERFACE execute(args: Dictionary) -> Dictionary:
+func execute(args: Dictionary) -> Dictionary:
 	timer = 0.0
 	from = args.from
 	to = args.to
 	amount = args.amount
+	color = args.color
 	for i in amount:
 		var square_node = square.duplicate()
 		square_array.append(square_node)
 		self.add_child(square_node)
 		square_node.add_to_group("diffuse")
 		square_node.show()
-	
-	return res
+	return {}
 
 
 ## works

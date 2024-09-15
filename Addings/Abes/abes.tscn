@@ -13,22 +13,22 @@
 visibility_layer = 513
 position = Vector2(640, 360)
 
-[node name="from" type="CharacterBody2D" parent="."]
+[node name="p1" type="CharacterBody2D" parent="."]
 position = Vector2(256, 192)
 script = ExtResource("1_xchnm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="from"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="p1"]
 shape = SubResource("CircleShape2D_uuawj")
 
-[node name="Sprite2D" type="Sprite2D" parent="from"]
+[node name="Sprite2D" type="Sprite2D" parent="p1"]
 texture = ExtResource("1_s1g7g")
 
-[node name="to" type="CharacterBody2D" parent="."]
+[node name="p2" type="CharacterBody2D" parent="."]
 position = Vector2(1024, 512)
 script = ExtResource("1_xchnm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="to"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="p2"]
 shape = SubResource("CircleShape2D_uuawj")
 
-[node name="Sprite2D" type="Sprite2D" parent="to"]
+[node name="Sprite2D" type="Sprite2D" parent="p2"]
 texture = ExtResource("1_s1g7g")
