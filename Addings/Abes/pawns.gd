@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = clamp(velocity.x, -speed, speed)
 	move_and_slide()
 	## Call attachable.execute()
-	if(randf() < 0.1):
+	if(randf() < 0.14):
 		var args: Dictionary
 		if name == "p1":
 			args.from = get_parent().find_child("p1")
@@ -41,7 +41,11 @@ func _physics_process(delta: float) -> void:
 			args.to = get_parent().find_child("p1")
 			args.color = Color.MAGENTA
 		args.amount = 10
-		abes[0].execute(args)
+		var res = abes[0].execute(args)
+		print(res)
+		hide()
+	else:
+		show()
 	
 	
 func attachable(abe_name: StringName, args: Array = []) -> Node:
