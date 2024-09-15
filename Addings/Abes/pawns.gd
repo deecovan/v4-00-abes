@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = clamp(velocity.x, -speed, speed)
 	move_and_slide()
 	## Call attachable.execute()
-	if(randf() < 0.01):
+	if(randf() < 0.1):
 		var args: Dictionary
 		args.from = get_parent().find_child("from")
 		args.to = get_parent().find_child("to")

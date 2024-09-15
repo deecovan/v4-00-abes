@@ -4,5 +4,6 @@
 z_index = 555
 
 [node name="Square" type="Polygon2D" parent="."]
+visible = false
 color = Color(1, 0, 1, 1)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
