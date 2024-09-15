@@ -16,7 +16,7 @@ func _ready() -> void:
 	velocity.x  += direction.x * speed * randf()
 	speed *= randf_range(0.8,1.2)
 	
-	## @USE attachable
+	## Append attachable
 	abes.append(attachable("Diffuse"))
 
 
@@ -29,8 +29,9 @@ func _physics_process(delta: float) -> void:
 	velocity  += direction * speed * delta
 	velocity.x = clamp(velocity.x, -speed, speed)
 	move_and_slide()
+	
 	## Call attachable.execute()
-	if(randf() < 0.1):
+	if(randf() < delta):
 		var args: Dictionary
 		if name == "p1":
 			args.from = get_parent().find_child("p1")
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			args.from = get_parent().find_child("p2")
 			args.to = get_parent().find_child("p1")
 			args.color = Color.MAGENTA
-		args.amount = 10
+		args.amount = randi_range(5, 25)
 		var res = abes[0].execute(args)
 		if res != {}:
 			print(res)
@@ -55,8 +56,6 @@ func attachable(abe_name: StringName, args: Array = []) -> Node:
 	add_child(instance)
 	## Set up instance and script
 	instance.set_script(script)
-	## Force call _ready() due to not really ready
-	instance._ready()
 	## Force calling _process()
 	instance.set_process(true)
 	print("Node \"", name, "\" attached ", abe_name, args)
