@@ -31,9 +31,9 @@ func execute(args: Dictionary) -> Dictionary:
 		add_child(square_node)
 		square_node.add_to_group("diffuse")
 		square_node.color = color
-		square_node.global_position += Vector2(randf_range(-64,64),randi_range(-64,64))
+		square_node.global_position += Vector2(randf_range(-32,32),randi_range(-32,32))
 		square_node.show()
-	## Report result
+	## Return result
 	res.name = to
 	res.cooldown = false
 	res.count = get_tree().get_nodes_in_group("diffuse").size()

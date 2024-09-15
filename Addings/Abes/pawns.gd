@@ -2,17 +2,17 @@ extends CharacterBody2D
 
 
 var speed      := 640.0
-var direction  := Vector2.RIGHT
+var direction  := Vector2.ZERO
 var abes       := []
 	
 
 func _ready() -> void:
-	## init direction
+	## Initial direction
 	if(global_position.x < 640):
 		direction = Vector2.RIGHT
 	else:
 		direction = Vector2.LEFT
-	## little random
+	## A little bit random
 	velocity.x  += direction.x * speed * randf()
 	speed *= randf_range(0.8,1.2)
 	
@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	## bob movement
+	## Bob movement
 	if global_position.x <= (512):
 		direction = Vector2.RIGHT
 	if global_position.x >= (1280-512):
@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 			args.color = Color.MAGENTA
 		args.amount = randi_range(5, 25)
 		var res = abes[0].execute(args)
+		## Print the answer result
 		if res != {}:
 			print(res)
 	
@@ -54,7 +55,7 @@ func attachable(abe_name: StringName, args: Array = []) -> Node:
 	var script = load(fname + ".gd")
 	var instance: Node2D = scene.instantiate()
 	add_child(instance)
-	## Set up instance and script
+	## Setting up an instance and script
 	instance.set_script(script)
 	## Force calling _process()
 	instance.set_process(true)
