@@ -18,6 +18,7 @@ func execute(args: Dictionary) -> Dictionary:
 	var res: Dictionary
 	## Check cooldown timer
 	if timer != null:
+		print("Cool down ", to)
 		return res
 	## Get arguments
 	from = args.from
