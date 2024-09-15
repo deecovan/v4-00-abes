@@ -20,12 +20,13 @@ func execute(_args: Array) -> Array:
 	return res
 
 
+## works
 func _init() -> void:
 	amount = 10
-	print(amount)
 	square = find_child("Square")
 	
-
+	
+## not works but forced with instance._ready()
 func _ready() -> void:
 	for i in amount:
 		var square_node = square.duplicate()
@@ -33,10 +34,10 @@ func _ready() -> void:
 		self.add_child(square_node)
 		square_node.add_to_group("diffuse")
 		square_node.global_position += Vector2(randf_range(-20,20),randf_range(-20,20))
-		print(square_node.global_position)
 		square_node.show()
 
 
+## not works but forced with instance.set_process(true)
 func _process(delta: float) -> void:
 	timer += delta
 	if(amount > 0 and from != null and to != null):

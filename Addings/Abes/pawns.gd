@@ -32,6 +32,18 @@ func _physics_process(delta: float) -> void:
 	
 	
 func attachable(abe_name: StringName, args: Array = []) -> Node:
-	var attached := Node.new()
+	## Instantiate ability
+	var fname := "res://Addings/Abes/Abilities/" + abe_name + "/" + abe_name
+	var scene = load(fname + ".tscn")
+	var script = load(fname + ".gd")
+	var instance: Node2D = scene.instantiate()
+	add_child(instance)
+	## Set up instance and script
+	instance.set_script(script)
+	## Force call _ready() due to not really ready
+	instance._ready()
+	## Force calling _process()
+	instance.set_process(true)
 	print("Node \"", name, "\" attached ", abe_name, args)
-	return attached
+	print (instance)
+	return instance
