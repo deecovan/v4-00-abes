@@ -11,6 +11,7 @@ var from: CharacterBody2D
 var to: CharacterBody2D
 var color: Color
 var amount: int
+var child_to = get_parent().get_parent()
 
 
 ## @INTERFACE execute(args: Dictionary) -> Dictionary:
@@ -29,14 +30,17 @@ func execute(args: Dictionary) -> Dictionary:
 	start_timer()
 	for i in amount:
 		var square_node = square.duplicate()
-		add_child(square_node)
+		## Add to global positioned node
+		child_to.add_child(square_node)
 		square_node.add_to_group("diffuse")
+		square_node.add_to_group("to" + to.name)
 		square_node.color = color
+		square_node.global_position = global_position
 		square_node.global_position += Vector2(randf_range(-32,32),randi_range(-32,32))
 		square_node.show()
 	## Return result
 	res.name = to
-	res.count = get_tree().get_nodes_in_group("diffuse").size()
+	res.count = get_tree().get_nodes_in_group("to" + to.name).size()
 	return res
 
 
@@ -44,10 +48,10 @@ func execute(args: Dictionary) -> Dictionary:
 func _process(delta: float) -> void:
 	## To avoid empty startup errors
 	if (from != null and to != null and 
-			get_tree().get_nodes_in_group("diffuse").size() > 0):
+			get_tree().get_nodes_in_group("to" + to.name).size() > 0):
 		## Iteration of diffusion parts
-		for child in get_children():
-			if child.is_in_group("diffuse"):
+		for child in child_to.get_children():
+			if child.is_in_group("to" + to.name):
 				## If the destination is reached
 				if (child.global_position - to.global_position).length() < 64:
 					child.queue_free()

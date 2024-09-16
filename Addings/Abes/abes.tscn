@@ -9,10 +9,6 @@
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="World"]
-visibility_layer = 513
-position = Vector2(640, 360)
-
 [node name="p1" type="CharacterBody2D" parent="."]
 position = Vector2(256, 192)
 script = ExtResource("1_pyxfb")
@@ -32,3 +28,7 @@ shape = SubResource("CircleShape2D_uuawj")
 
 [node name="Sprite2D" type="Sprite2D" parent="p2"]
 texture = ExtResource("2_36r3y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visibility_layer = 513
+position = Vector2(640, 360)
