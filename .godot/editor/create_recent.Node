@@ -1,0 +1,6 @@
+Timer
+Sprite2D
+CollisionShape2D
+CharacterBody2D
+Camera2D
+Node2D
