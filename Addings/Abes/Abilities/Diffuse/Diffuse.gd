@@ -35,6 +35,7 @@ func execute(args: Dictionary) -> Dictionary:
 		square_node.add_to_group("diffuse")
 		square_node.add_to_group("to" + to.name)
 		square_node.color = color
+		square_node.z_index = 600
 		square_node.global_position = global_position
 		square_node.global_position += Vector2(randf_range(-32,32),randi_range(-32,32))
 		square_node.show()
