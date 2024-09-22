@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 			print(res)
 	
 	## Call attachable.execute() for p1.abes[1]
-	if(abes[1] != null and name == "p1" and randf() < delta ):
+	if(abes.size() > 1 and abes[1] != null and name == "p1" and randf() < delta ):
 		var args: Dictionary
 		args.from = get_parent().find_child("p1")
 		args.to = get_parent().find_child("p2")

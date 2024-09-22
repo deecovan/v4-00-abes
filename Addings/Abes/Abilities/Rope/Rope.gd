@@ -26,7 +26,6 @@ func _ready() -> void:
 	if !i_am_ready:
 		print("Imnt Ready")
 		## link Rope parts
-		rope.target_rope = rope
 		rope_start.rope = rope
 		rope_start.target_node = from
 		rope_end.rope = rope
