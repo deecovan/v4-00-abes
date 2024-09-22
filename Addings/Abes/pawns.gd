@@ -4,21 +4,28 @@ extends CharacterBody2D
 @export var scr_height := 600
 
 
-var speed      := scr_width/3
+var speed      := scr_width/3.0
 var direction  := Vector2.ZERO
 var abes       := []
+
+
+var hlf_speed := speed/2.0
+var hlf_scr_width := scr_width/2.0
+var qtr_scr_width := scr_width/4.0
+var hlf_scr_height := scr_height/2.0
+var qtr_scr_height := scr_height/4.0
 
 
 func _ready() -> void:
 	## Initial direction
 	direction = Vector2.ZERO
 	
-	if(global_position.x < scr_width/2):
+	if(global_position.x < hlf_scr_width):
 		direction = Vector2.RIGHT
 	else:
 		direction = Vector2.LEFT
 	
-	if(global_position.y < scr_height/2):
+	if(global_position.y < hlf_scr_height):
 		direction += Vector2.DOWN
 	else:
 		direction += Vector2.UP
@@ -28,7 +35,7 @@ func _ready() -> void:
 	velocity  += direction * speed
 	
 	## Append attachable
-	abes.append(attachable("Diffuse"))
+	abes.append(null) ## Empty node was attachable("Diffuse")
 	## Simple attachable mark
 	if name == "p1":
 		abes.append(attachable("Mark"))
@@ -40,27 +47,21 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	## Bob movement 2d
 	direction = Vector2.ZERO
-	
-	if global_position.x <= (scr_width/4):
+	if global_position.x <= (qtr_scr_width):
 		direction = Vector2.RIGHT
-	
-	if global_position.x >= (scr_width-scr_width/4):
+	if global_position.x >= (scr_width-qtr_scr_width):
 		direction = Vector2.LEFT
-	
-	if global_position.y <= (scr_height/4):
+	if global_position.y <= (qtr_scr_height):
 		direction = Vector2.DOWN
-	
-	if global_position.y >= (scr_height-scr_height/4):
+	if global_position.y >= (scr_height-qtr_scr_height):
 		direction = Vector2.UP
 	velocity  += direction * speed * delta
-	
-	velocity.x = clamp(velocity.x, -speed/2, speed/2)
-	
-	velocity.y = clamp(velocity.y, -speed/2, speed/2)
+	velocity.x = clamp(velocity.x, -hlf_speed, hlf_speed)
+	velocity.y = clamp(velocity.y, -hlf_speed, hlf_speed)
 	move_and_slide()
 	
 	## Call attachable.execute() for abes[0]
-	if(randf() < delta):
+	if(abes[0] != null and randf() < delta):
 		var args: Dictionary
 		if name == "p1":
 			args.from = get_parent().find_child("p1")
@@ -78,12 +79,7 @@ func _physics_process(delta: float) -> void:
 			print(res)
 	
 	## Call attachable.execute() for p1.abes[1]
-	if(
-		name == "p1"
-		and abes.size() > 1
-		and abes[1] != null
-		and randf() < delta
-		):
+	if(abes[1] != null and name == "p1" and randf() < delta ):
 		var args: Dictionary
 		args.from = get_parent().find_child("p1")
 		args.to = get_parent().find_child("p2")

@@ -1,15 +1,22 @@
 extends Node2D
 
 
+## Parts
+var pause: bool
+var rope: Node2D = find_child("Rope")
+var from: Node2D = find_child("from")
+var rope_start: Node2D = find_child("ropeStart")
+var to: Node2D = find_child("to")
+var rope_end: Node2D = find_child("ropeEnd")
 ## Variables
-var lines: Node2D = find_child("Lines")
+var zzz := ""
+var real_dist: int
 ## Cooldown timer
 var timer: Timer
-var real_dist: int
 ## Arguments
-var from: CharacterBody2D
-var to: CharacterBody2D
-var dist: int
+var _from: CharacterBody2D
+var _to: CharacterBody2D
+var _dist: int
 ## Hack infrastructuure
 var child_to = get_parent().get_parent()
 var i_am_ready := false
@@ -17,8 +24,13 @@ var i_am_ready := false
 
 func _ready() -> void:
 	if !i_am_ready:
-		print_debug()
-		lines.hide()
+		print("Imnt Ready")
+		## link Rope parts
+		rope.target_rope = rope
+		rope_start.rope = rope
+		rope_start.target_node = from
+		rope_end.rope = rope
+		rope_end.target_node = to
 		i_am_ready = true
 
 
@@ -27,25 +39,23 @@ func execute(args: Dictionary) -> Dictionary:
 	var res: Dictionary
 	## Check cooldown timer
 	if timer != null:
-		print("Cool down ", from.name, " on ", name)
+		print("Cool down ", _from.name, " on ", name)
 		return res
 	## Get arguments
-	to = args.to
-	from = args.from
-	dist = args.dist
+	_to = args.to
+	_from = args.from
+	_dist = args.dist
 	## Instatiate Rope
 	res.success = false
-	if to != null and from != null:
+	if _to != null and _from != null:
 		start_timer()
-		real_dist = int((from.global_position - to.global_position).length())
-		if real_dist <= dist:
+		real_dist = int((_from.global_position - _to.global_position).length())
+		if real_dist <= _dist:
 			## Show Rope
-			lines.global_position = to.global_position
-			lines.show()
 			res.success = true
 		## Return result
-		res.to_name = to.name
-		res.from_name = from.name
+		res.to_name = _to.name
+		res.from_name = _from.name
 		res.dist = real_dist
 	return res
 
@@ -55,11 +65,11 @@ func _process(_delta: float) -> void:
 	if !i_am_ready:
 		_ready()
 	## To avoid empty startup errors
-	if to != null and from != null:
-		real_dist = int((from.global_position - to.global_position).length())
-		if real_dist <= dist:
+	if _to != null and _from != null:
+		real_dist = int((_from.global_position - _to.global_position).length())
+		if real_dist <= _dist:
 			## Update Rope
-			lines.global_position = to.global_position
+			pass
 		else:
 			## Delete Rope
 			delete_rope()
@@ -82,6 +92,5 @@ func _on_timer_timeout() -> void:
 func delete_rope() -> void:
 	if timer != null:
 		timer.queue_free()
-		to = null
-		from = null
-	lines.hide()
+		_to = null
+		_from = null

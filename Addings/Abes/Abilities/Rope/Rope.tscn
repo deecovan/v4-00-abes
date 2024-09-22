@@ -6,6 +6,8 @@
 [node name="Rope" type="Node2D"]
 z_index = 555
 position = Vector2(384, 256)
+
+[node name="RopeRoot" type="Node2D" parent="."]
 script = ExtResource("1_ep805")
 num_segments = 40
 rope_length = 400.0
@@ -14,19 +16,22 @@ gravity = 0.0
 gravity_direction = Vector2(0, 0)
 damping = 2.0
 num_constraint_iterations = 20
-color = Color(1, 0.458824, 0.541176, 1)
 
-[node name="from" type="Node2D" parent="."]
+[node name="from" type="Node2D" parent="RopeRoot"]
+position = Vector2(-192, -128)
 
-[node name="ropeStart" type="Node2D" parent="."]
+[node name="ropeStart" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
+position = Vector2(-192, -128)
 script = ExtResource("2_vjylc")
-enable = false
+target_node = NodePath("../from")
+rope = NodePath("..")
 rope_position = 0.0
 
-[node name="to" type="Node2D" parent="."]
-position = Vector2(328, 144)
+[node name="to" type="Node2D" parent="RopeRoot"]
+position = Vector2(520, 272)
 
-[node name="ropeEnd" type="Node2D" parent="."]
-position = Vector2(328, 144)
+[node name="ropeEnd" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
+position = Vector2(520, 272)
 script = ExtResource("2_vjylc")
-enable = false
+target_node = NodePath("../to")
+rope = NodePath("..")
