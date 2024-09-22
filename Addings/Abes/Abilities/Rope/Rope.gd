@@ -23,22 +23,8 @@ var i_am_ready := false
 func _ready() -> void:
 	if !i_am_ready:
 		## link Rope parts
-		rope_set()
 		rope.hide()
-		print("i_am_ready")
 		i_am_ready = true
-		
-
-func rope_set() -> void:
-		rope_start.rope = rope
-		rope_start.target_node = from
-		rope_end.rope = rope
-		rope_end.target_node = to
-		rope.show()
-
-
-func rope_unset() -> void:
-		rope.hide()
 
 
 ## @INTERFACE execute(args: Dictionary) -> Dictionary:
@@ -55,20 +41,16 @@ func execute(args: Dictionary) -> Dictionary:
 	## Instatiate Rope
 	res.success = false
 	if _to != null and _from != null:
-		start_timer()
 		real_dist = int((_from.global_position - _to.global_position).length())
 		if real_dist <= _dist:
 			## Add the Rope
 			from = _from
 			to = _to
-			rope_set()
 			res.success = true
 		## Return result
 		res.to_name = _to.name
 		res.from_name = _from.name
 		res.dist = real_dist
-	if res.success == false:
-		rope_unset()
 	return res
 
 
@@ -78,30 +60,15 @@ func _process(_delta: float) -> void:
 		_ready()
 	## To avoid empty startup errors
 	if _to != null and _from != null:
-		real_dist = int((_from.global_position - _to.global_position).length())
-		if real_dist <= _dist:
 			## Update Rope
 			from = _from
 			to = _to
 			rope_set()
 
 
-func delete_rope() -> void:
-	_from = null
-	_to = null
-	rope_unset()
-	if timer != null:
-		timer.queue_free()
-
-
-## Create and start a timer manually
-func start_timer() -> void:
-	timer = Timer.new()
-	timer.one_shot = true
-	timer.autostart = true
-	add_child(timer)
-	timer.connect("timeout", _on_timer_timeout)
-
-
-func _on_timer_timeout() -> void:
-	delete_rope()
+func rope_set() -> void:
+		rope_start.rope = rope
+		rope_start.target_node = from
+		rope_end.rope = rope
+		rope_end.target_node = to
+		rope.show()

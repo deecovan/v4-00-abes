@@ -4,7 +4,6 @@
 z_index = 555
 
 [node name="Lines" type="Node2D" parent="."]
-scale = Vector2(2, 2)
 
 [node name="Line2D1" type="Line2D" parent="Lines"]
 points = PackedVector2Array(0, -32, 24, -24, 32, 0, 24, 24, 0, 32, -24, 24, -32, 0, -24, -24, 0, -32, 0, -40, 0, -24)
