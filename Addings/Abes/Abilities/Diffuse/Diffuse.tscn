@@ -1,4 +1,4 @@
-[gd_scene format=3 ]
+[gd_scene format=3 uid="uid://dpi561vt1k2sa"]
 
 [node name="Diffuse" type="Node2D"]
 z_index = 555
