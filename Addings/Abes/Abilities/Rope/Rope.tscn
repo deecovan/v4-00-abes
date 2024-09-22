@@ -5,7 +5,6 @@
 
 [node name="Rope" type="Node2D"]
 z_index = 555
-position = Vector2(384, 256)
 
 [node name="RopeRoot" type="Node2D" parent="."]
 script = ExtResource("1_ep805")
@@ -18,20 +17,16 @@ damping = 2.0
 num_constraint_iterations = 20
 
 [node name="from" type="Node2D" parent="RopeRoot"]
-position = Vector2(-192, -128)
 
 [node name="RopeStart" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
-position = Vector2(-192, -128)
 script = ExtResource("2_vjylc")
 target_node = NodePath("../from")
 rope = NodePath("..")
 rope_position = 0.0
 
 [node name="to" type="Node2D" parent="RopeRoot"]
-position = Vector2(520, 272)
 
 [node name="RopeEnd" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
-position = Vector2(520, 272)
 script = ExtResource("2_vjylc")
 target_node = NodePath("../to")
 rope = NodePath("..")

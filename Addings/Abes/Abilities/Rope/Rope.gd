@@ -58,7 +58,6 @@ func execute(args: Dictionary) -> Dictionary:
 		start_timer()
 		real_dist = int((_from.global_position - _to.global_position).length())
 		if real_dist <= _dist:
-			print("_to != null and _from != null -> ", real_dist," <= ",_dist)
 			## Add the Rope
 			from = _from
 			to = _to
