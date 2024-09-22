@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxihmktbvik8k"]
 
-[ext_resource type="Script" path="res://Addings/Abes/Abilities/Rope/RopeMain.gd" id="1_lv3vr"]
-[ext_resource type="Script" path="res://Addings/Abes/Abilities/Rope/RopePoint.gd" id="2_dljpp"]
+[ext_resource type="Script" path="res://addons/ropesim/Rope.gd" id="1_ep805"]
+[ext_resource type="Script" path="res://addons/ropesim/RopeInteraction.gd" id="2_vjylc"]
 
 [node name="Rope" type="Node2D"]
 z_index = 555
 position = Vector2(384, 256)
-script = ExtResource("1_lv3vr")
+script = ExtResource("1_ep805")
 num_segments = 40
 rope_length = 400.0
 max_endpoint_distance = 500.0
@@ -18,17 +18,15 @@ color = Color(1, 0.458824, 0.541176, 1)
 
 [node name="from" type="Node2D" parent="."]
 
-[node name="ropeStart" type="Node2D" parent="." node_paths=PackedStringArray("target_node", "rope")]
-script = ExtResource("2_dljpp")
-target_node = NodePath("../from")
-rope = NodePath("..")
+[node name="ropeStart" type="Node2D" parent="."]
+script = ExtResource("2_vjylc")
+enable = false
 rope_position = 0.0
 
 [node name="to" type="Node2D" parent="."]
 position = Vector2(328, 144)
 
-[node name="ropeEnd" type="Node2D" parent="." node_paths=PackedStringArray("target_node", "rope")]
+[node name="ropeEnd" type="Node2D" parent="."]
 position = Vector2(328, 144)
-script = ExtResource("2_dljpp")
-target_node = NodePath("../to")
-rope = NodePath("..")
+script = ExtResource("2_vjylc")
+enable = false
