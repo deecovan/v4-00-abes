@@ -29,10 +29,7 @@ func _ready() -> void:
 	
 	## Append attachable
 	abes.append(attachable("Diffuse"))
-	## Simple attachable for Cars player
-	## Attach to Player p1
-	## (de)Activate on "1" just pressed
-	## Mark p2 with Target sprite on active
+	## Simple attachable mark
 	if name == "p1":
 		abes.append(attachable("Mark"))
 

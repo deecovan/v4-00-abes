@@ -27,7 +27,7 @@ func execute(args: Dictionary) -> Dictionary:
 	var res: Dictionary
 	## Check cooldown timer
 	if timer != null:
-		print("Cool down ", to)
+		print("Cool down ", from.name, " on ", name)
 		return res
 	## Get arguments
 	to = args.to
@@ -54,8 +54,8 @@ func _process(_delta: float) -> void:
 	## Hack _ready() cant be called from pawn's add_child(instance)
 	if !i_am_ready:
 		_ready()
-	if to != null and from != null:
 	## To avoid empty startup errors
+	if to != null and from != null:
 		real_dist = int((from.global_position - to.global_position).length())
 		if real_dist <= dist:
 			## Update mark
@@ -82,4 +82,6 @@ func _on_timer_timeout() -> void:
 func delete_mark() -> void:
 	if timer != null:
 		timer.queue_free()
+		to = null
+		from = null
 	lines.hide()
