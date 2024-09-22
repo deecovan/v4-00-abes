@@ -42,7 +42,7 @@ func _on_pre_update() -> void:
 
 func _update() -> void:
 	var rope: Rope = _helper.target_rope
-	print(_helper.target_rope)
+	
 	# The point weight is set here instead of _update_state() to ensure that handles do not
 	# overwrite each other's strength values if they coincidentally target the same point index.
 	rope.set_point_simulation_weight(_target_idx, 1.0 - strength)

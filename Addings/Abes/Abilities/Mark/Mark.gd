@@ -17,7 +17,6 @@ var i_am_ready := false
 
 func _ready() -> void:
 	if !i_am_ready:
-		print_debug()
 		lines.hide()
 		i_am_ready = true
 

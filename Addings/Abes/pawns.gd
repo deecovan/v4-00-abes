@@ -89,6 +89,18 @@ func _physics_process(delta: float) -> void:
 		## Print the answer result
 		if res != {}:
 			print(res)
+	
+	## Call attachable.execute() for p1.abes[2]
+	if(abes.size() > 2 and abes[2] != null and name == "p1" and randf() < delta ):
+		var args: Dictionary
+		args.from = get_parent().find_child("p1")
+		args.to = get_parent().find_child("p2")
+		args.dist = 400
+		
+		var res = abes[2].execute(args)
+		## Print the answer result
+		if res != {}:
+			print(res)
 
 
 func attachable(abe_name: StringName, args: Array = []) -> Node:

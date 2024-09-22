@@ -20,7 +20,7 @@ num_constraint_iterations = 20
 [node name="from" type="Node2D" parent="RopeRoot"]
 position = Vector2(-192, -128)
 
-[node name="ropeStart" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
+[node name="RopeStart" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
 position = Vector2(-192, -128)
 script = ExtResource("2_vjylc")
 target_node = NodePath("../from")
@@ -30,7 +30,7 @@ rope_position = 0.0
 [node name="to" type="Node2D" parent="RopeRoot"]
 position = Vector2(520, 272)
 
-[node name="ropeEnd" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
+[node name="RopeEnd" type="Node2D" parent="RopeRoot" node_paths=PackedStringArray("target_node", "rope")]
 position = Vector2(520, 272)
 script = ExtResource("2_vjylc")
 target_node = NodePath("../to")
