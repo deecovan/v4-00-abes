@@ -60,23 +60,23 @@ func _physics_process(delta: float) -> void:
 	velocity.y = clamp(velocity.y, -hlf_speed, hlf_speed)
 	move_and_slide()
 	
-	## Call attachable.execute() for abes[0]
-	if(abes[0] != null and randf() < delta):
-		var args: Dictionary
-		if name == "p1":
-			args.from = get_parent().find_child("p1")
-			args.to = get_parent().find_child("p2")
-			args.color = Color.CYAN
-		else:
-			args.from = get_parent().find_child("p2")
-			args.to = get_parent().find_child("p1")
-			args.color = Color.MAGENTA
-		args.amount = randi_range(5, 25)
-		
-		var res = abes[0].execute(args)
-		## Print the answer result
-		if res != {}:
-			print(res)
+	### Call attachable.execute() for abes[0]
+	#if(abes[0] != null and randf() < delta):
+		#var args: Dictionary
+		#if name == "p1":
+			#args.from = get_parent().find_child("p1")
+			#args.to = get_parent().find_child("p2")
+			#args.color = Color.CYAN
+		#else:
+			#args.from = get_parent().find_child("p2")
+			#args.to = get_parent().find_child("p1")
+			#args.color = Color.MAGENTA
+		#args.amount = randi_range(5, 25)
+		#
+		#var res = abes[0].execute(args)
+		### Print the answer result
+		#if res != {}:
+			#print(res)
 	
 	## Call attachable.execute() for p1.abes[1]
 	if(abes.size() > 1 and abes[1] != null and name == "p1" and randf() < delta ):
@@ -91,11 +91,11 @@ func _physics_process(delta: float) -> void:
 			print(res)
 	
 	## Call attachable.execute() for p1.abes[2]
-	if(abes.size() > 2 and abes[2] != null and name == "p1" and randf() < delta ):
+	if(abes.size() > 2 and abes[2] != null and name == "p1" and randf() < delta):
 		var args: Dictionary
 		args.from = get_parent().find_child("p1")
 		args.to = get_parent().find_child("p2")
-		args.dist = 400
+		args.dist = 500
 		
 		var res = abes[2].execute(args)
 		## Print the answer result
@@ -109,7 +109,7 @@ func attachable(abe_name: StringName, args: Array = []) -> Node:
 	var scene = load(fname + ".tscn")
 	var script = load(fname + ".gd")
 	var instance: Node2D = scene.instantiate()
-	add_child(instance)
+	get_parent().add_child.call_deferred(instance)
 	## Setting up an instance and script
 	instance.set_script(script)
 	## Force calling _process() and _ready()

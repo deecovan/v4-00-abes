@@ -11,7 +11,7 @@ var from: CharacterBody2D
 var to: CharacterBody2D
 var color: Color
 var amount: int
-var child_to = get_parent().get_parent()
+var child_to = get_parent()
 
 
 ## @INTERFACE execute(args: Dictionary) -> Dictionary:

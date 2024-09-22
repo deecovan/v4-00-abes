@@ -11,7 +11,7 @@ var from: CharacterBody2D
 var to: CharacterBody2D
 var dist: int
 ## Hack infrastructuure
-var child_to = get_parent().get_parent()
+var child_to = get_parent()
 var i_am_ready := false
 
 

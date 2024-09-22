@@ -2,14 +2,12 @@ extends Node2D
 
 
 ## Parts
-var pause: bool
-var rope: Node2D = find_child("RopeRoot")
-var from: Node2D = find_child("from")
-var rope_start: Node2D = find_child("RopeStart")
-var to: Node2D = find_child("to")
-var rope_end: Node2D = find_child("RopeEnd")
+@onready var rope: Node2D = find_child("RopeRoot")
+@onready var from: Node2D = find_child("from")
+@onready var rope_start: Node = find_child("RopeStart")
+@onready var to: Node2D = find_child("to")
+@onready var rope_end: Node = find_child("RopeEnd")
 ## Variables
-var zzz := ""
 var real_dist: int
 ## Cooldown timer
 var timer: Timer
@@ -18,7 +16,7 @@ var _from: CharacterBody2D
 var _to: CharacterBody2D
 var _dist: int
 ## Hack infrastructuure
-var child_to = get_parent().get_parent()
+var child_to = get_parent()
 var i_am_ready := false
 
 
@@ -27,6 +25,7 @@ func _ready() -> void:
 		## link Rope parts
 		rope_set()
 		rope.hide()
+		print("i_am_ready")
 		i_am_ready = true
 		
 
@@ -85,9 +84,6 @@ func _process(_delta: float) -> void:
 			from = _from
 			to = _to
 			rope_set()
-		else:
-			## Delete Rope
-			delete_rope()
 
 
 func delete_rope() -> void:
