@@ -36,7 +36,8 @@ func rope_set() -> void:
 		rope_end.rope = rope
 		rope_end.target_node = to
 		rope.show()
-		
+
+
 func rope_unset() -> void:
 		rope.hide()
 
@@ -89,17 +90,12 @@ func _process(_delta: float) -> void:
 			delete_rope()
 
 
-## Manually too
-func _on_timer_timeout() -> void:
-	delete_rope()
-
-
 func delete_rope() -> void:
+	_from = null
+	_to = null
+	rope_unset()
 	if timer != null:
 		timer.queue_free()
-		_from = null
-		_to = null
-		rope_unset()
 
 
 ## Create and start a timer manually
@@ -109,3 +105,7 @@ func start_timer() -> void:
 	timer.autostart = true
 	add_child(timer)
 	timer.connect("timeout", _on_timer_timeout)
+
+
+func _on_timer_timeout() -> void:
+	delete_rope()
