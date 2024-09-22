@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxihmktbvik8k"]
+
+[ext_resource type="Script" path="res://Addings/Abes/Abilities/Rope/RopeMain.gd" id="1_lv3vr"]
+[ext_resource type="Script" path="res://Addings/Abes/Abilities/Rope/RopePoint.gd" id="2_dljpp"]
+
+[node name="Rope" type="Node2D"]
+z_index = 555
+script = ExtResource("1_lv3vr")
+num_segments = 40
+rope_length = 400.0
+max_endpoint_distance = 500.0
+stiffness = 0.2
+gravity = 0.0
+gravity_direction = Vector2(0, 0)
+
+[node name="from" type="Node2D" parent="."]
+
+[node name="to" type="Node2D" parent="."]
+
+[node name="ropeStart" type="Node2D" parent="." node_paths=PackedStringArray("target_node", "rope")]
+script = ExtResource("2_dljpp")
+target_node = NodePath("../from")
+rope = NodePath("..")
+rope_position = 0.0
+
+[node name="ropeEnd" type="Node2D" parent="." node_paths=PackedStringArray("target_node", "rope")]
+script = ExtResource("2_dljpp")
+target_node = NodePath("../to")
+rope = NodePath("..")
