@@ -18,8 +18,6 @@ position = Vector2(550, 330)
 position = Vector2(250, 200)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_pyxfb")
-scr_width = null
-scr_height = null
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/p1"]
@@ -34,8 +32,6 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_pyxfb")
-scr_width = null
-scr_height = null
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/p2"]

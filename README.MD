@@ -3,4 +3,5 @@
 - Merge deployed Cars/Farters abilities into /compose branch
 - Deploy Simple player's Mark ability to p1 (for Cars Player)
 - Deploy Rope player's ability
-	- Start Targeting+Linking Rope first Rope physics second
+- Deploy Targeting + Linking
+- Deploy Rope physics

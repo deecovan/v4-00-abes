@@ -15,7 +15,7 @@ var speed          := qtr_scr_width * randf() + qtr_scr_width
 var direction      := Vector2.ZERO
 var abes           := []
 var mark_attached  := false
-var rope_attached  s:= false
+var rope_attached  := false
 
 
 func _ready() -> void:
