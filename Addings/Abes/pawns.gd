@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var scr_width  := 1100
 @export var scr_height := 600
 
+@warning_ignore("integer_division")
 var speed      := scr_width/3
 var direction  := Vector2.ZERO
 var abes       := []
@@ -11,15 +12,18 @@ var abes       := []
 func _ready() -> void:
 	## Initial direction
 	direction = Vector2.ZERO
+	@warning_ignore("integer_division")
 	if(global_position.x < scr_width/2):
 		direction = Vector2.RIGHT
 	else:
 		direction = Vector2.LEFT
+	@warning_ignore("integer_division")
 	if(global_position.y < scr_height/2):
 		direction += Vector2.DOWN
 	else:
 		direction += Vector2.UP
 	## A little bit random
+	@warning_ignore("narrowing_conversion")
 	speed *= randf_range(0.8,1.2)
 	velocity  += direction * speed
 	
@@ -35,16 +39,22 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	## Bob movement 2d
 	direction = Vector2.ZERO
+	@warning_ignore("integer_division")
 	if global_position.x <= (scr_width/4):
 		direction = Vector2.RIGHT
+	@warning_ignore("integer_division")
 	if global_position.x >= (scr_width-scr_width/4):
 		direction = Vector2.LEFT
+	@warning_ignore("integer_division")
 	if global_position.y <= (scr_height/4):
 		direction = Vector2.DOWN
+	@warning_ignore("integer_division")
 	if global_position.y >= (scr_height-scr_height/4):
 		direction = Vector2.UP
 	velocity  += direction * speed * delta
+	@warning_ignore("integer_division")
 	velocity.x = clamp(velocity.x, -speed/2, speed/2)
+	@warning_ignore("integer_division")
 	velocity.y = clamp(velocity.y, -speed/2, speed/2)
 	move_and_slide()
 	
