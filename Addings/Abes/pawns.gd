@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+@export var scr_width  := 1100
+@export var scr_height := 600
 
-var speed      := 500.0
+var speed      := scr_width/3
 var direction  := Vector2.ZERO
 var abes       := []
 	
@@ -9,11 +11,11 @@ var abes       := []
 func _ready() -> void:
 	## Initial direction
 	direction = Vector2.ZERO
-	if(global_position.x < 550):
+	if(global_position.x < scr_width/2):
 		direction = Vector2.RIGHT
 	else:
 		direction = Vector2.LEFT
-	if(global_position.y < 330):
+	if(global_position.y < scr_height/2):
 		direction += Vector2.DOWN
 	else:
 		direction += Vector2.UP
@@ -28,17 +30,17 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	## Bob movement 2d
 	direction = Vector2.ZERO
-	if global_position.x <= (400):
+	if global_position.x <= (scr_width/4):
 		direction = Vector2.RIGHT
-	if global_position.x >= (1100-400):
+	if global_position.x >= (scr_width-scr_width/4):
 		direction = Vector2.LEFT
-	if global_position.y <= (250):
+	if global_position.y <= (scr_height/4):
 		direction = Vector2.DOWN
-	if global_position.y >= (660-250):
+	if global_position.y >= (scr_height-scr_height/4):
 		direction = Vector2.UP
 	velocity  += direction * speed * delta
-	velocity.x = clamp(velocity.x, -speed, speed)
-	velocity.y = clamp(velocity.y, -speed, speed)
+	velocity.x = clamp(velocity.x, -speed/2, speed/2)
+	velocity.y = clamp(velocity.y, -speed/2, speed/2)
 	move_and_slide()
 	
 	## Call attachable.execute()
