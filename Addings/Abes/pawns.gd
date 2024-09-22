@@ -7,7 +7,7 @@ extends CharacterBody2D
 var speed      := scr_width/3
 var direction  := Vector2.ZERO
 var abes       := []
-	
+
 
 func _ready() -> void:
 	## Initial direction
@@ -33,7 +33,8 @@ func _ready() -> void:
 	## Attach to Player p1
 	## (de)Activate on "1" just pressed
 	## Mark p2 with Target sprite on active
-	abes.append(attachable("Diffuse"))
+	if name == "p1":
+		abes.append(attachable("Mark"))
 
 
 func _physics_process(delta: float) -> void:
@@ -58,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y = clamp(velocity.y, -speed/2, speed/2)
 	move_and_slide()
 	
-	## Call attachable.execute()
+	## Call attachable.execute() for abes[0]
 	if(randf() < delta):
 		var args: Dictionary
 		if name == "p1":
@@ -70,12 +71,30 @@ func _physics_process(delta: float) -> void:
 			args.to = get_parent().find_child("p1")
 			args.color = Color.MAGENTA
 		args.amount = randi_range(5, 25)
+		
 		var res = abes[0].execute(args)
 		## Print the answer result
 		if res != {}:
 			print(res)
 	
-	
+	## Call attachable.execute() for p1.abes[1]
+	if(
+		name == "p1"
+		and abes.size() > 1
+		and abes[1] != null
+		and randf() < delta
+		):
+		var args: Dictionary
+		args.from = get_parent().find_child("p1")
+		args.to = get_parent().find_child("p2")
+		args.dist = 400
+		
+		var res = abes[1].execute(args)
+		## Print the answer result
+		if res != {}:
+			print(res)
+
+
 func attachable(abe_name: StringName, args: Array = []) -> Node:
 	## Instantiate ability
 	var fname := "res://Addings/Abes/Abilities/" + abe_name + "/" + abe_name
@@ -85,7 +104,7 @@ func attachable(abe_name: StringName, args: Array = []) -> Node:
 	add_child(instance)
 	## Setting up an instance and script
 	instance.set_script(script)
-	## Force calling _process()
+	## Force calling _process() and _ready()
 	instance.set_process(true)
 	print("Node \"", name, "\" attached ", abe_name, args)
 	return instance

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dxihmktbvik8k"]
+
+[node name="Mark" type="Node2D"]
+z_index = 555
+
+[node name="Lines" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Line2D1" type="Line2D" parent="Lines"]
+points = PackedVector2Array(0, -32, 24, -24, 32, 0, 24, 24, 0, 32, -24, 24, -32, 0, -24, -24, 0, -32, 0, -40, 0, -24)
+width = 4.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="Lines"]
+position = Vector2(0, -33)
+scale = Vector2(1, 1.75)
+points = PackedVector2Array(0, 32.5714, 0, 41.7143)
+width = 4.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="Lines"]
+points = PackedVector2Array(24, 0, 40, 0)
+width = 4.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="Lines"]
+position = Vector2(-56, 0)
+points = PackedVector2Array(32, 0, 16, 0)
+width = 4.0
+default_color = Color(1, 0, 0, 1)

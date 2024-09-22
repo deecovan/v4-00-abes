@@ -40,7 +40,8 @@ func execute(args: Dictionary) -> Dictionary:
 		square_node.global_position += Vector2(randf_range(-64,64),randi_range(-64,64))
 		square_node.show()
 	## Return result
-	res.name = to
+	res.to_name = to.name
+	res.from_name = from.name
 	res.count = get_tree().get_nodes_in_group("to" + to.name).size()
 	return res
 
