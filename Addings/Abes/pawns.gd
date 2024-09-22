@@ -48,7 +48,6 @@ func _ready() -> void:
 		abes.append(attachable("Rope"))
 
 
-
 func _physics_process(delta: float) -> void:
 	## Bob movement 2d
 	direction = Vector2.ZERO
@@ -94,7 +93,7 @@ func _physics_process(delta: float) -> void:
 		var res = abes[1].execute(args)
 		## Print the answer result
 		if res != {}:
-			print(res)
+			print("Mark: ", res)
 			mark_attached = res.success
 	
 	## Call attachable.execute() for p1.abes[2]
@@ -109,7 +108,7 @@ func _physics_process(delta: float) -> void:
 		var res = abes[2].execute(args)
 		## Print the answer result
 		if res != {}:
-			print(res)
+			print("Rope: ", res)
 			rope_attached = res.success
 
 
