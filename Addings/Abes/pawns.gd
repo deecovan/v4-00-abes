@@ -4,17 +4,18 @@ extends CharacterBody2D
 @export var scr_height := 600
 
 
-var speed      := scr_width * randf()
-var direction  := Vector2.ZERO
-var abes       := []
-var rope_attached := false
-
-
-var hlf_speed := speed/2.0
-var hlf_scr_width := scr_width/2.0
-var qtr_scr_width := scr_width/4.0
+var hlf_speed      := speed/2.0
+var hlf_scr_width  := scr_width/2.0
+var qtr_scr_width  := scr_width/4.0
 var hlf_scr_height := scr_height/2.0
 var qtr_scr_height := scr_height/4.0
+
+
+var speed          := qtr_scr_width * randf() + qtr_scr_width
+var direction      := Vector2.ZERO
+var abes           := []
+var mark_attached  := false
+var rope_attached  s:= false
 
 
 func _ready() -> void:
@@ -23,12 +24,16 @@ func _ready() -> void:
 	
 	if(global_position.x < hlf_scr_width):
 		direction = Vector2.RIGHT
+		speed = qtr_scr_width * randf() + qtr_scr_width
 	else:
 		direction = Vector2.LEFT
+		speed = qtr_scr_width * randf() + qtr_scr_width
 	if(global_position.y < hlf_scr_height):
 		direction += Vector2.DOWN
+		speed = qtr_scr_width * randf() + qtr_scr_width
 	else:
 		direction += Vector2.UP
+		speed = qtr_scr_width * randf() + qtr_scr_width
 	## A little bit random
 	
 	speed *= randf_range(0.8,1.2)
@@ -78,7 +83,8 @@ func _physics_process(delta: float) -> void:
 			#print(res)
 	
 	## Call attachable.execute() for p1.abes[1]
-	if(name == "p1" and randf() < delta
+	if(name == "p1" 
+	and !mark_attached and !rope_attached and randf() < delta
 	and abes.size() > 1 and abes[1] != null):
 		var args: Dictionary
 		args.from = get_parent().find_child("p1")
@@ -89,9 +95,11 @@ func _physics_process(delta: float) -> void:
 		## Print the answer result
 		if res != {}:
 			print(res)
+			mark_attached = res.success
 	
 	## Call attachable.execute() for p1.abes[2]
-	if(name == "p1" and !rope_attached and randf() < delta
+	if(name == "p1"
+	and mark_attached and !rope_attached and randf() < delta
 	and abes.size() > 2 and abes[2] != null):
 		var args: Dictionary
 		args.from = get_parent().find_child("p1")
