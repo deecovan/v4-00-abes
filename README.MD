@@ -5,3 +5,6 @@
 - Deploy Rope player's ability
 - Deploy Targeting + Linking
 - Deploy Rope physics
+- Balance Targeting and Rope linking logic
+- Relink Diffuse and fix positions with new tree
+
