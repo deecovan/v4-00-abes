@@ -101,7 +101,7 @@ func _physics_process(delta: float) -> void:
 	
 	## Call attachable.execute() for p1.abes[2]
 	if(name == "p1"
-	and mark_attached and !rope_attached and randf() < delta/4
+	and mark_attached and !rope_attached and randf() < delta
 	and abes.size() > 2 and abes[2] != null):
 		var args: Dictionary
 		args.from = get_parent().find_child("p1")
@@ -128,3 +128,8 @@ func attachable(abe_name: StringName, args: Array = []) -> Node:
 	instance.set_process(true)
 	print("Node \"", name, "\" attached ", abe_name, args)
 	return instance
+	
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		get_tree().reload_current_scene()

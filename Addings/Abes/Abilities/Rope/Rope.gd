@@ -73,6 +73,6 @@ func rope_set() -> void:
 		rope_start.target_node = from
 		rope_end.rope = rope
 		rope_end.target_node = to
-		rope.rope_length = max_endpoint_distance * 0.8
+		rope.rope_length = max_endpoint_distance * 0.6
 		rope.max_endpoint_distance = max_endpoint_distance
 		rope.show()
