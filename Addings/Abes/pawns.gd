@@ -34,7 +34,7 @@ func _ready() -> void:
 	velocity  += direction * speed
 	
 	## Append attachable
-	abes.append(null) ## Empty node was attachable("Diffuse")
+	abes.append(attachable("Diffuse")) ## null or attachable("Diffuse")
 	## Simple attachable mark
 	if name == "p1":
 		abes.append(attachable("Mark"))
@@ -66,22 +66,22 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	### Call attachable.execute() for abes[0]
-	#if(abes[0] != null and randf() < delta):
-		#var args: Dictionary
-		#if name == "p1":
-			#args.from = get_parent().find_child("p1")
-			#args.to = get_parent().find_child("p2")
-			#args.color = Color.CYAN
-		#else:
-			#args.from = get_parent().find_child("p2")
-			#args.to = get_parent().find_child("p1")
-			#args.color = Color.MAGENTA
-		#args.amount = randi_range(5, 25)
-		#
-		#var res = abes[0].execute(args)
-		### Print the answer result
-		#if res != {}:
-			#print(res)
+	if(abes[0] != null and randf() < delta):
+		var args: Dictionary
+		if name == "p1":
+			args.from = get_parent().find_child("p1")
+			args.to = get_parent().find_child("p2")
+			args.color = Color.CYAN
+		else:
+			args.from = get_parent().find_child("p2")
+			args.to = get_parent().find_child("p1")
+			args.color = Color.MAGENTA
+		args.amount = randi_range(5, 25)
+		
+		var res = abes[0].execute(args)
+		## Print the answer result
+		if res != {}:
+			print(res)
 	
 	## Call attachable.execute() for p1.abes[1]
 	if(name == "p1" 

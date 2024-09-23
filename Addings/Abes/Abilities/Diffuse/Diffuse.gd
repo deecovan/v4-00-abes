@@ -11,12 +11,15 @@ var from: CharacterBody2D
 var to: CharacterBody2D
 var color: Color
 var amount: int
-var child_to = get_parent()
+var child_to: Node2D
 
 
 ## @INTERFACE execute(args: Dictionary) -> Dictionary:
 func execute(args: Dictionary) -> Dictionary:
 	var res: Dictionary
+	child_to = get_parent()
+	if child_to == null:
+		return res
 	## Check cooldown timer
 	if timer != null:
 		print("Cool down ", from.name, " on ", name)
@@ -36,7 +39,7 @@ func execute(args: Dictionary) -> Dictionary:
 		square_node.add_to_group("to" + to.name)
 		square_node.color = color
 		square_node.z_index = 600
-		square_node.global_position = global_position
+		square_node.global_position = from.global_position
 		square_node.global_position += Vector2(randf_range(-64,64),randi_range(-64,64))
 		square_node.show()
 	## Return result
