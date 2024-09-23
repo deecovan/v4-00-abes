@@ -3,7 +3,6 @@ extends Node2D
 
 ## Variables
 @onready var lines: Node2D = find_child("Lines")
-@onready var mark_attached = get_parent().find_child("p2").mark_attached
 ## Cooldown timer
 var timer: Timer
 var real_dist: int
@@ -70,6 +69,7 @@ func start_timer() -> void:
 	timer = Timer.new()
 	timer.one_shot = true
 	timer.autostart = true
+	timer.wait_time = 3
 	add_child(timer)
 	timer.connect("timeout", _on_timer_timeout)
 
@@ -82,7 +82,7 @@ func _on_timer_timeout() -> void:
 func delete_mark() -> void:
 	if timer != null:
 		timer.queue_free()
-		to = null
-		from = null
-	mark_attached = false
+	to = null
+	from = null
+	get_parent().find_child("p1").mark_attached = false
 	lines.hide()

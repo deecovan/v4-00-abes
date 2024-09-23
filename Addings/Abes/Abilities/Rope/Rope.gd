@@ -8,7 +8,8 @@ extends Node2D
 @onready var to: Node2D = find_child("to")
 @onready var rope_end: Node = find_child("RopeEnd")
 ## Variables
-var real_dist: int
+var max_endpoint_distance := 300
+var real_dist := max_endpoint_distance + 100
 ## Cooldown timer
 var timer: Timer
 ## Arguments
@@ -46,6 +47,7 @@ func execute(args: Dictionary) -> Dictionary:
 			## Add the Rope
 			from = _from
 			to = _to
+			max_endpoint_distance = _dist
 			res.success = true
 		## Return result
 		res.to_name = _to.name
@@ -71,4 +73,6 @@ func rope_set() -> void:
 		rope_start.target_node = from
 		rope_end.rope = rope
 		rope_end.target_node = to
+		rope.rope_length = max_endpoint_distance * 0.8
+		rope.max_endpoint_distance = max_endpoint_distance
 		rope.show()
