@@ -69,10 +69,12 @@ func _physics_process(delta: float) -> void:
 	if(abes[0] != null and randf() < delta):
 		var args: Dictionary
 		if name == "p1":
+			Log.entry(str("P1  used ", abes[0].name), 1)
 			args.from = get_parent().find_child("p1")
 			args.to = get_parent().find_child("p2")
 			args.color = Color.CYAN
 		else:
+			Log.entry(str("P2  used ", abes[0].name), 1)
 			args.from = get_parent().find_child("p2")
 			args.to = get_parent().find_child("p1")
 			args.color = Color.MAGENTA
