@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://pcescw4h1722"]
+
+[ext_resource type="Texture2D" uid="uid://d3x112r5cp8md" path="res://Addings/Control/Sprites/ua.png" id="1_dj863"]
+[ext_resource type="Texture2D" uid="uid://djlhma2wywn50" path="res://Addings/Control/Sprites/white.bmp" id="2_5iumt"]
+
+[node name="Button" type="TextureButton"]
+texture_filter = 1
+offset_right = 8.0
+offset_bottom = 8.0
+texture_normal = ExtResource("1_dj863")
+stretch_mode = 0
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+value = 33.0
+fill_mode = 3
+texture_progress = ExtResource("2_5iumt")
+tint_progress = Color(1, 1, 1, 0.294118)
