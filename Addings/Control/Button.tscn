@@ -18,6 +18,7 @@ default_font = ExtResource("3_6fahe")
 texture_filter = 1
 offset_right = 8.0
 offset_bottom = 8.0
+scale = Vector2(2, 2)
 shortcut = SubResource("Shortcut_r68vo")
 texture_normal = ExtResource("1_dj863")
 stretch_mode = 0
