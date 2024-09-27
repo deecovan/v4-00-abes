@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://fto7ivtyx0xw"]
+[gd_scene load_steps=5 format=3 uid="uid://fto7ivtyx0xw"]
 
 [ext_resource type="Texture2D" uid="uid://cfauq1cd1o4ny" path="res://Addings/Control/Sprites/cyan.bmp" id="1_d1hmi"]
+[ext_resource type="Script" path="res://Addings/Control/SkillBar.gd" id="2_g8rux"]
 [ext_resource type="PackedScene" uid="uid://pcescw4h1722" path="res://Addings/Control/Button.tscn" id="2_ws7fm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isdnw"]
@@ -30,6 +31,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("2_g8rux")
 
 [node name="Button1" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
 layout_mode = 2
