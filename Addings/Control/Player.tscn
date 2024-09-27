@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isdnw"]
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(544, 320)
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_isdnw")
@@ -16,8 +19,12 @@ texture = ExtResource("1_d1hmi")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SkillBar" type="HBoxContainer" parent="UI"]
-offset_right = 32.0
-offset_bottom = 32.0
+offset_left = 368.0
+offset_top = 576.0
+offset_right = 544.0
+offset_bottom = 608.0
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
 
 [node name="Button1" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
 layout_mode = 2
