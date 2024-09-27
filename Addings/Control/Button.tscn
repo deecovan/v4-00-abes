@@ -16,8 +16,9 @@ default_font = ExtResource("3_6fahe")
 
 [node name="Button" type="TextureButton"]
 texture_filter = 1
-offset_right = 8.0
-offset_bottom = 8.0
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
 scale = Vector2(2, 2)
 shortcut = SubResource("Shortcut_r68vo")
 texture_normal = ExtResource("1_dj863")
@@ -44,7 +45,7 @@ grow_vertical = 0
 theme = SubResource("Theme_qd72q")
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 12
-text = "3"
+text = "1"
 vertical_alignment = 2
 
 [node name="Time" type="Label" parent="."]
@@ -61,7 +62,6 @@ grow_vertical = 0
 theme = SubResource("Theme_qd72q")
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 8
-text = "0.0"
 horizontal_alignment = 2
 vertical_alignment = 2
 
