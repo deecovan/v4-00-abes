@@ -19,5 +19,17 @@ texture = ExtResource("1_d1hmi")
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="Button" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
+[node name="Button1" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
+layout_mode = 2
+
+[node name="Button2" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
+layout_mode = 2
+
+[node name="Button3" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
+layout_mode = 2
+
+[node name="Button4" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
+layout_mode = 2
+
+[node name="Button5" parent="UI/SkillBar" instance=ExtResource("2_ws7fm")]
 layout_mode = 2
