@@ -28,11 +28,14 @@ func multi_shot(count: int = 3, delay: float = 0.3,
 
 
 func angled_shot(angle: float, i: int) -> void:
-	var projectile = projectile_node.instance()
-	if i % 2 == 0:
-		projectile.play("Dark")
-	else:
+	var projectile = projectile_node.instantiate()
+	if i % 3 == 0:
+		projectile.play("DarkBall")
+	elif i % 3 == 1:
 		projectile.play("Fire")
+	else:
+		projectile.play("Water")
+		
 	projectile.add_to_group("projectile")
 	projectile.set_physics_process(true)
 	projectile.position = global_position

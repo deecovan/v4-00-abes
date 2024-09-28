@@ -2,7 +2,7 @@ extends Skill
 class_name FireShot
 
 func _init(target) -> void:
-	cooldown = 1.0
+	cooldown = 2.0
 	animation_name = "Fire"
 	texture = preload("res://Addings/Control/Assets/FX/Skill Icons/48x48/skill_icons4.png")
 
