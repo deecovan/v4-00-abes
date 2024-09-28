@@ -8,3 +8,4 @@
 - Balance Targeting and Rope linking logic
 - Relink Diffuse and fix positions with new tree
 - Deploy Skills and ActionBar from youtube.com/watch?v=XzqcWKQ_mz0
+- It works until target.multi_shot() dont have the shot realisation
