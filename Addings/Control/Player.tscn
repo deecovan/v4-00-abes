@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://fto7ivtyx0xw"]
+[gd_scene load_steps=6 format=3 uid="uid://fto7ivtyx0xw"]
 
 [ext_resource type="Texture2D" uid="uid://cfauq1cd1o4ny" path="res://Addings/Control/Sprites/cyan.bmp" id="1_d1hmi"]
+[ext_resource type="Script" path="res://Addings/Control/Player.gd" id="1_u6hqk"]
 [ext_resource type="Script" path="res://Addings/Control/SkillBar.gd" id="2_g8rux"]
 [ext_resource type="PackedScene" uid="uid://pcescw4h1722" path="res://Addings/Control/Button.tscn" id="2_ws7fm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isdnw"]
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(544, 544)
-metadata/_edit_group_ = true
+motion_mode = 1
+script = ExtResource("1_u6hqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_isdnw")
